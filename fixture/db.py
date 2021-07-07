@@ -17,8 +17,8 @@ class DbFixture:
         try:
             cursor.execute("select name from mantis_project_table")
             for row in cursor:
-                (id, name, header, footer) = row
-                list.append(Group(id=str(id), name=name, header=header, footer=footer))
+                name = row
+                list.append(name=name)
         finally:
             cursor.close()
         return list
