@@ -14,6 +14,7 @@ class Application:
         else:
             raise ValueError("Unrecognized browser  %s" % browser)
         self.session = SessionHelper(self)
+        self.base_url = base_url
 
 
     def is_valid(self):
