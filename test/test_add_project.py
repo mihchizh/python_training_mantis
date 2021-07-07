@@ -3,6 +3,7 @@
 def add_project(app, db):
     old_projects = db.get_project_list()
     name = app.project.generate_random_name
-    new_groups = db.get_group_list()
-    old_groups.append(group)
-    assert old_groups == new_groups
+    app.project.create(name)
+    new_projects = db.get_project_list()
+    old_projects.append(name)
+    assert old_projects == new_projects
