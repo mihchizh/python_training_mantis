@@ -10,3 +10,7 @@ class ProjectHelper:
         wd.find_element_by_css_selector("a.manage-menu-link").click()
         wd.find_element_by_xpath("//*[@id='manage-menu']/ul/li[3]/a").click()
 
+    def generate_random_name(self):
+        symbols = string.ascii_letters + string.digits
+        return "group" + "".join([random.choice(symbols) for i in range(random.randrange(10))])
+
