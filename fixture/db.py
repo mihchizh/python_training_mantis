@@ -1,5 +1,5 @@
 import pymysql
-import re
+
 
 
 class DbFixture:
