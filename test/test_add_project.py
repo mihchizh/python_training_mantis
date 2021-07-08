@@ -8,5 +8,6 @@ def test_add_project(app, db):
     app.session.Login("administrator", "root")
     app.project.create(name)
     new_projects = db.get_project_list()
+    assert len(old_projects) + 1 == len(new_projects)
     old_projects.append(name)
-    assert old_projects == new_projects
+    assert sorted(old_projects) == sorted(new_projects)
