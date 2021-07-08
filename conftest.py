@@ -2,6 +2,7 @@ from fixture.Application import Application
 import pytest
 import json
 import os.path
+from fixture.db import DbFixture
 
 
 fixture = None
@@ -15,6 +16,10 @@ def load_config(file):
         with open(config_file) as f:
             target = json.load(f)
     return target
+
+@pytest.fixture(scope="session")
+def config(request):
+    return load_config(request.config.getoption("--target"))
 
 @pytest.fixture
 def app(request):
@@ -40,4 +45,13 @@ def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")
     parser.addoption("--target", action="store", default="target.json")
 
+
+@pytest.fixture(scope="session")
+def db(request, config):
+    db_config = config["db"]
+    db_fixture = DbFixture(host=db_config["host"], name=db_config["name"], user=db_config["user"], password=db_config["password"])
+    def fin():
+        db_fixture.destroy()
+    request.addfinalizer(fin)
+    return db_fixture
 

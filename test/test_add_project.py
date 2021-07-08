@@ -1,6 +1,6 @@
 
 
-def add_project(app, db):
+def test_add_project(app, db):
     old_projects = db.get_project_list()
     name = app.project.generate_random_name
     app.project.create(name)
