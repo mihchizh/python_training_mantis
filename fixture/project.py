@@ -1,4 +1,5 @@
-
+import random
+import string
 
 class ProjectHelper:
 
@@ -7,8 +8,8 @@ class ProjectHelper:
 
     def open_projects_page(self):
         wd = self.app.wd
-        wd.find_element_by_xpath("//*[@id='menu-items']/li[7]/a").click()
-        wd.find_element_by_xpath("//*[@id='manage-menu']/ul/li[3]/a").click()
+        wd.find_element_by_link_text("управление").click()
+        wd.find_element_by_link_text("Управление проектами").click()
 
     def generate_random_name(self):
         symbols = string.ascii_letters + string.digits
