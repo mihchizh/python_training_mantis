@@ -24,3 +24,10 @@ class ProjectHelper:
         wd.find_element_by_id("project-name").send_keys(name)
         wd.find_element_by_xpath("//input[@value='Добавить проект']").click()
 
+    def delete(self, name):
+        wd = self.app.wd
+        self.open_projects_page()
+        wd.find_element_by_link_text(name).click()
+        wd.find_element_by_xpath(u"//input[@value='Удалить проект']").click()
+        wd.find_element_by_xpath(u"//input[@value='Удалить проект']").click()
+
